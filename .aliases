@@ -1,0 +1,20 @@
+alias src="source $HOME/.zshrc"
+alias glg="git log --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias pa='php artisan'
+alias pat='php artisan tinker'
+alias xcp="xclip -selection clipboard"
+alias gsf="git submodule foreach"
+alias gsc="gsf 'composer install || true'"
+alias gsua="gsf 'git checkout master && git pull'"
+alias myeca="cd $HOME/git/ECA-repo/MyECA && pnpm run dev"
+alias parol="php artisan route:list"
+alias vim=nvim
+
+# remote update production server
+alias upeshop="ssh eshop sudo -u eshop git -C /home/eshop/domains/eshop.eca.ir/public_html pull"
+alias uphelp="ssh eca sudo -u help git -C /home/help/domains/help.eca.ir/public_html pull"
+alias upeshopstage="ssh stage sudo -u eshop git -C /home/eshop/domains/eshop.hlot.ir/public_html pull"
+alias upmyeca="ssh stage sudo -u myeca bash -c 'cd /home/myeca/domains/myeca.hlot.ir/public_html; gnpm'"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias phpstorm='$HOME/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm.sh'
+alias lsi='ls | xargs -I {} sh -c "stat {}; echo ----------------------------------"'

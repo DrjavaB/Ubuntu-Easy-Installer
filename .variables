@@ -1,0 +1,9 @@
+export gitdir="$HOME/git"
+export shop="$gitdir/ECA-repo/shop"
+export mods="$shop/modules"
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export DOCKER_HOST=unix:///run/user/1001/docker.sock
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PATH:/usr/bin:/opt/nvim-linux64/bin"

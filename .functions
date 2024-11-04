@@ -1,0 +1,66 @@
+#!/bin/bash
+ip-resolve() {
+	curl -s http://ip-api.com/json/$1 | jq
+}
+
+myip() {
+    curl -s https://api.myip.com/ | jq
+}
+
+open-port() {
+    # first argument is IP and second is port
+    nc -v $1 $2
+}
+
+open-ports() {
+    sudo nmap -sS $1
+}
+
+open-ports-deep() {
+    nmap -p- -vv -T5 -A $1
+}
+
+echo-all() {
+    echo $@
+}
+
+lst(){
+    find $1 -type f -print0 | xargs -0 ls -lth --time-style="+%F %T" | less
+}
+
+whois(){
+    # whois api from api-ninjas.com
+    curl -s --header "X-Api-Key: syDLzMVkdEop2RhBQuhXgA==14if9r4RPC1oDlpj" https://api.api-ninjas.com/v1/whois\?domain\=$1 | jq
+}
+
+#composer functions
+
+composerv(){
+    # argument is php version name
+    if [ -z "$1" ]
+    then
+	    echo "PHP version is not given"
+	    kill -INT $$
+    fi
+    `which $1` `which composer` install
+}
+
+composer7.4() {
+    `which php7.4` `which composer` $@
+}
+
+composer8.0() {
+    `which php8.0` `which composer` $@
+}
+
+composer8.1() {
+    `which php8.1` `which composer` $@
+}
+
+composer8.2() {
+    `which php8.2` `which composer` $@
+}
+
+composer8.3() {
+    `which php8.3` `which composer` $@
+}
