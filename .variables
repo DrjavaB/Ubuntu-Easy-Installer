@@ -1,6 +1,4 @@
 export gitdir="$HOME/git"
-export shop="$gitdir/ECA-repo/shop"
-export mods="$shop/modules"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
