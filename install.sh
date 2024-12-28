@@ -62,18 +62,6 @@ select webservice in nginx apache2; do
 done
 sudo systemctl enable --now $webservice
 
-if [ ! -d $HOME/.oh-my-zsh ]; then
-    echo ohmyzsh installing...
-    bash ohmyzsh.sh
-fi
-
-# ZSH plugins
-ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-git clone https://github.com/unixorn/fzf-zsh-plugin.git --depth 1 $ZSH_CUSTOM/plugins/fzf-zsh-plugin
-git clone https://github.com/zsh-users/zsh-autosuggestions.git --depth 1 $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/marlonrichert/zsh-autocomplete.git --depth 1 $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git --depth 1 $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-
 echo php installing...
 . php.sh
 
@@ -110,6 +98,13 @@ echo RabbitMQ Stack installing...
 echo Google Chrome installing...
 . google-chrome.sh
 
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    echo ohmyzsh installing...
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# ZSH plugins
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 sed -i 's/plugins=(git)/plugins=(\n\tgit\n\tubuntu\n\tlaravel\n\tsymfony\n\taliases\n\tdocker\n\tfzf-zsh-plugin\n\tzsh-autosuggestions\n\tzsh-syntax-highlighting\n)/g' $HOME/.zshrc
 
 cp .aliases $HOME/.aliases
@@ -123,4 +118,7 @@ cat <<EOF >>$HOME/.zshrc
 . $HOME/.functions
 EOF
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

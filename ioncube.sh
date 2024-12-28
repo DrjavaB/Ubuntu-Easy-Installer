@@ -8,7 +8,7 @@ for php in $php_list; do
     if [ -f $file ]; then
         sudo cp $file $extension_dir/ioncube.so
         sudo touch /etc/php/$version/mods-available/ioncube.ini
-        sudo bash -c "cat <<EOF >>/etc/php/$version/mods-available/ioncube.ini
+        sudo bash -c "cat <<EOF > /etc/php/$version/mods-available/ioncube.ini
 ; configuration for php ioncube loader module
 ; priority=00
 zend_extension=ioncube.so
