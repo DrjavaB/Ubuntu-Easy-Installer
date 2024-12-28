@@ -9,7 +9,7 @@ myip() {
 
 open-port() {
     # first argument is IP and second is port
-    nc -v $1 $2
+    nc -vz $1 $2
 }
 
 open-ports() {
